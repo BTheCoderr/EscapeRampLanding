@@ -40,7 +40,7 @@ export default function Hero() {
 					{/* Main headline */}
 					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
 						The Fastest Way{' '}
-						<span className="gradient-text">Off QuickBooks Desktop</span>
+						<span className="gradient-text">Off The Books</span>
 					</h1>
 
 					{/* Subheadline */}
@@ -60,70 +60,141 @@ export default function Hero() {
 							name="early-access"
 							method="POST" 
 							data-netlify="true"
-							className="space-y-4 max-w-md mx-auto"
+							className="space-y-6 max-w-md mx-auto"
 						>
 							<input type="hidden" name="form-name" value="early-access" />
 							
 							{/* Email (required) */}
-							<input
-								type="email"
-								name="email"
-								placeholder="Enter your email address"
-								className="w-full px-4 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white/80 backdrop-blur-sm"
-								required
-							/>
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
+									Email Address *
+								</label>
+								<input
+									type="email"
+									name="email"
+									placeholder="your@email.com"
+									className="w-full px-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm"
+									required
+								/>
+							</div>
 							
 							{/* Current accounting software */}
-							<select
-								name="current-software"
-								className="w-full px-4 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 bg-white/80 backdrop-blur-sm"
-							>
-								<option value="">What do you currently use for accounting?</option>
-								<option value="quickbooks-desktop">QuickBooks Desktop</option>
-								<option value="quickbooks-online">QuickBooks Online</option>
-								<option value="xero">Xero</option>
-								<option value="other">Other</option>
-							</select>
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
+									Current Accounting Software
+								</label>
+								<select
+									name="current-software"
+									className="w-full px-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 text-gray-900 bg-white/90 backdrop-blur-sm shadow-sm"
+								>
+									<option value="">Select your current software</option>
+									<option value="quickbooks-desktop">QuickBooks Desktop</option>
+									<option value="quickbooks-online">QuickBooks Online</option>
+									<option value="xero">Xero</option>
+									<option value="sage">Sage</option>
+									<option value="freshbooks">FreshBooks</option>
+									<option value="wave">Wave</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+							
+							{/* Budget */}
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
+									Whats your budget for migration?
+								</label>
+								<select
+									name="budget"
+									className="w-full px-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 text-gray-900 bg-white/90 backdrop-blur-sm shadow-sm"
+								>
+									<option value="">Select your budget range</option>
+									<option value="under-1000">$1,000</option>
+									<option value="1000-2500">$1,000 - $2,500</option>
+									<option value="2500-5000">$2,500 - $5,000</option>
+									<option value="5000-10000">$5,000 - $10,000</option>
+									<option value="over-10000">$10,000+</option>
+									<option value="not-sure">Not sure yet</option>
+								</select>
+							</div>
 							
 							{/* Urgency */}
-							<div className="space-y-2">
-								<label className="block text-sm font-medium text-gray-700 text-left">
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
 									How urgent is your need to migrate?
 								</label>
-								<div className="space-y-2">
-									<label className="flex items-center">
-										<input type="radio" name="urgency" value="asap" className="mr-2" />
-										<span className="text-sm text-gray-700">ASAP</span>
+								<div className="space-y-3">
+									<label className="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200 cursor-pointer">
+										<input type="radio" name="urgency" value="asap" className="mr-3 text-primary-600 focus:ring-primary-500" />
+										<div>
+											<div className="font-medium text-gray-900">ASAP</div>
+											<div className="text-sm text-gray-500">Need to migrate within 30 days</div>
+										</div>
 									</label>
-									<label className="flex items-center">
-										<input type="radio" name="urgency" value="3-months" className="mr-2" />
-										<span className="text-sm text-gray-700">The next 3 months</span>
+									<label className="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200 cursor-pointer">
+										<input type="radio" name="urgency" value="3-months" className="mr-3 text-primary-600 focus:ring-primary-500" />
+										<div>
+											<div className="font-medium text-gray-900">The next 3 months</div>
+											<div className="text-sm text-gray-500">Planning to migrate soon</div>
+										</div>
 									</label>
-									<label className="flex items-center">
-										<input type="radio" name="urgency" value="exploring" className="mr-2" />
-										<span className="text-sm text-gray-700">Just exploring</span>
+									<label className="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200 cursor-pointer">
+										<input type="radio" name="urgency" value="exploring" className="mr-3 text-primary-600 focus:ring-primary-500" />
+										<div>
+											<div className="font-medium text-gray-900">Just exploring</div>
+											<div className="text-sm text-gray-500">Researching options for the future</div>
+										</div>
 									</label>
 								</div>
 							</div>
 							
+							{/* What tool do you have? */}
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
+									What tool do you have?
+								</label>
+								<input
+									name="tool"
+									placeholder="e.g., QuickBooks Desktop 2023, etc."
+									className="w-full px-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm"
+								/>
+							</div>
+							
+							{/* What are you migrating from? */}
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
+									What are you migrating from?
+								</label>
+								<input
+									name="migrating-from"
+									placeholder="e.g., QuickBooks Desktop to QuickBooks Online"
+									className="w-full px-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm"
+								/>
+							</div>
+							
 							{/* Specific struggles */}
-							<textarea
-								name="struggles"
-								placeholder="Anything specific you're struggling with? (optional)"
-								rows={3}
-								className="w-full px-4 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white/80 backdrop-blur-sm resize-none"
-							></textarea>
+							<div>
+								<label className="block text-sm font-medium text-gray-700">
+									What's been the hardest part for you?
+								</label>
+								<textarea
+									name="struggles"
+									placeholder="Tell us about your migration challenges..."
+									rows={3}
+									className="w-full px-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm resize-none"
+								></textarea>
+							</div>
 							
 							<button
 								type="submit"
-								className="group w-full bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 whitespace-nowrap"
+								className="group w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
 							>
 								Join Early Access
-								<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+								<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
 							</button>
 						</form>
-						<div className="mt-4 text-center">
-							<div className="text-sm text-gray-500 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-lg inline-block">
+						<div className="mt-6 text-center">
+							<div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full">
+								<span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
 								Private beta launching Fall 2025
 							</div>
 						</div>
