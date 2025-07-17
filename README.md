@@ -1,0 +1,98 @@
+# Escape Ramp Landing Page
+
+A modern, enterprise-level SaaS landing page for Escape Ramp, built with Next.js, Tailwind CSS, and Lucide React icons.
+
+## Features
+
+- 🎨 Modern, responsive design with enterprise SaaS aesthetic
+- 🌟 Beautiful gradients and animations
+- 📱 Fully responsive across all devices
+- ⚡ Fast performance with Next.js
+- 🎯 Optimized for conversions with clear CTAs
+- 🔧 Component-based architecture
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Language**: TypeScript
+- **Deployment**: Ready for Vercel/Netlify
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run the development server:
+
+```bash
+npm run dev
+```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
+
+```
+escapeRamp/
+├── app/
+│   ├── globals.css          # Global styles and Tailwind directives
+│   ├── layout.tsx           # Root layout component
+│   └── page.tsx             # Main page component
+├── components/
+│   ├── Hero.tsx             # Hero section with main CTA
+│   ├── Body.tsx             # Main content sections
+│   └── Footer.tsx           # Footer with links and contact
+├── public/
+│   └── PNG image.png        # Company logo
+└── package.json
+```
+
+## Customization
+
+### Colors
+
+The primary color scheme is defined in `tailwind.config.js`. The main brand color is green (`primary-600`).
+
+### Content
+
+Update the content in each component file:
+
+- `components/Hero.tsx` - Main headline and CTA
+- `components/Body.tsx` - Product features and benefits
+- `components/Footer.tsx` - Contact information and links
+
+### Logo
+
+Replace `public/PNG image.png` with your updated logo file.
+
+## Deployment
+
+This project is ready for deployment on:
+
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **AWS Amplify**
+- Any static hosting service
+
+## License
+
+© 2025 Escape Ramp. All rights reserved.

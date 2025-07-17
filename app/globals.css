@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-white text-gray-900;
+	}
+}
+
+@layer components {
+	.gradient-bg {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	}
+
+	.gradient-text {
+		background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.card-shadow {
+		box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+			0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
+
+	.hero-gradient {
+		background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+	}
+}
