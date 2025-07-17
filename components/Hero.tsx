@@ -40,50 +40,91 @@ export default function Hero() {
 					{/* Main headline */}
 					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
 						The Fastest Way{' '}
-						<span className="gradient-text">Off The Old Books</span>
+						<span className="gradient-text">Off QuickBooks Desktop</span>
 					</h1>
 
 					{/* Subheadline */}
 					<p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-						Escape Ramp helps small businesses transition painlessly to the
-						cloud with{' '}
-						<span className="font-semibold text-primary-600">
-							guaranteed data preservation
-						</span>{' '}
-						and{' '}
-						<span className="font-semibold text-primary-600">
-							zero downtime
-						</span>
-						.
+						Escape Ramp is building a modern migration service to help small businesses move from QuickBooks Desktop to the cloud — without the chaos.
 					</p>
 
-					{/* Email Signup Form */}
+					{/* Early Access Signup Form */}
 					<div className="max-w-lg mx-auto mb-12">
 						<h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
-							Sign up for updates
+							Join Early Access
 						</h3>
 						<p className="text-gray-600 mb-6 text-center">
-							Be the first to know when we launch. No spam, just updates.
+							Now accepting early access signups. Flat-fee migrations, expert support, zero downtime.
 						</p>
-						<form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+						<form 
+							name="early-access"
+							method="POST" 
+							data-netlify="true"
+							className="space-y-4 max-w-md mx-auto"
+						>
+							<input type="hidden" name="form-name" value="early-access" />
+							
+							{/* Email (required) */}
 							<input
 								type="email"
+								name="email"
 								placeholder="Enter your email address"
-								className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white/80 backdrop-blur-sm"
+								className="w-full px-4 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white/80 backdrop-blur-sm"
 								required
 							/>
+							
+							{/* Current accounting software */}
+							<select
+								name="current-software"
+								className="w-full px-4 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 bg-white/80 backdrop-blur-sm"
+							>
+								<option value="">What do you currently use for accounting?</option>
+								<option value="quickbooks-desktop">QuickBooks Desktop</option>
+								<option value="quickbooks-online">QuickBooks Online</option>
+								<option value="xero">Xero</option>
+								<option value="other">Other</option>
+							</select>
+							
+							{/* Urgency */}
+							<div className="space-y-2">
+								<label className="block text-sm font-medium text-gray-700 text-left">
+									How urgent is your need to migrate?
+								</label>
+								<div className="space-y-2">
+									<label className="flex items-center">
+										<input type="radio" name="urgency" value="asap" className="mr-2" />
+										<span className="text-sm text-gray-700">ASAP</span>
+									</label>
+									<label className="flex items-center">
+										<input type="radio" name="urgency" value="3-months" className="mr-2" />
+										<span className="text-sm text-gray-700">The next 3 months</span>
+									</label>
+									<label className="flex items-center">
+										<input type="radio" name="urgency" value="exploring" className="mr-2" />
+										<span className="text-sm text-gray-700">Just exploring</span>
+									</label>
+								</div>
+							</div>
+							
+							{/* Specific struggles */}
+							<textarea
+								name="struggles"
+								placeholder="Anything specific you're struggling with? (optional)"
+								rows={3}
+								className="w-full px-4 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white/80 backdrop-blur-sm resize-none"
+							></textarea>
+							
 							<button
 								type="submit"
-								className="group bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 whitespace-nowrap"
+								className="group w-full bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 whitespace-nowrap"
 							>
-								Sign Up
+								Join Early Access
 								<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
 							</button>
 						</form>
 						<div className="mt-4 text-center">
 							<div className="text-sm text-gray-500 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-lg inline-block">
-								Flat-fee migrations from{' '}
-								<span className="font-bold text-primary-600">$1,500</span>
+								Private beta launching Fall 2025
 							</div>
 						</div>
 					</div>
@@ -92,15 +133,15 @@ export default function Hero() {
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
 						<div className="flex items-center justify-center gap-3 text-gray-700">
 							<CheckCircle className="w-6 h-6 text-primary-600" />
-							<span className="font-medium">Guaranteed Data Preservation</span>
+							<span className="font-medium">Built by migration experts</span>
 						</div>
 						<div className="flex items-center justify-center gap-3 text-gray-700">
 							<Zap className="w-6 h-6 text-primary-600" />
-							<span className="font-medium">Zero Downtime Migration</span>
+							<span className="font-medium">Zero downtime migration</span>
 						</div>
 						<div className="flex items-center justify-center gap-3 text-gray-700">
 							<Shield className="w-6 h-6 text-primary-600" />
-							<span className="font-medium">Audit Trail Preserved</span>
+							<span className="font-medium">Guaranteed data preservation</span>
 						</div>
 					</div>
 				</div>

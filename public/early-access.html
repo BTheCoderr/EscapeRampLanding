@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Early Access Form</title>
+</head>
+<body>
+    <form name="early-access" method="POST" data-netlify="true">
+        <input type="hidden name="form-name" value=early-access" />
+        <input type="email" name="email" placeholder="Enter your email address" required />
+        <select name="current-software">
+            <option value="">What do you currently use for accounting?</option>
+            <option value="quickbooks-desktop">QuickBooks Desktop</option>
+            <option value=quickbooks-online">QuickBooks Online</option>
+            <option value="xero">Xero</option>
+            <option value="other">Other</option>
+        </select>
+        <div>
+            <label>How urgent is your need to migrate?</label>
+            <label><input type="radio" name="urgency" value="asap /> ASAP</label>
+            <label><input type="radio" name=urgency value="3-months" /> The next3label>
+            <label><input type="radio" name="urgency value="exploring" /> Just exploring</label>
+        </div>
+        <textarea name="struggles" placeholder=Anything specific you're struggling with? (optional)"></textarea>
+        <button type="submit">Join Early Access</button>
+    </form>
+</body>
+</html> 
