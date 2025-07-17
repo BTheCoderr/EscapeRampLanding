@@ -1,7 +1,6 @@
-import Hero from '../components/Hero';
-import Body from '../components/Body';
-import Footer from '../components/Footer';
-import Chatbot from '../components/Chatbot';
+import Hero from '@/components/Hero';
+import Body from '@/components/Body';
+import Footer from '@/components/Footer';
 
 export default function Home() {
 	return (
@@ -9,7 +8,6 @@ export default function Home() {
 			<Hero />
 			<Body />
 			<Footer />
-			<Chatbot />
 		</main>
 	);
 }

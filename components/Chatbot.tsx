@@ -66,7 +66,7 @@ const questions = [
 	},
 	{
 		id: 'tool',
-		text: "What specific tool/version do you have? (e.g., QuickBooks Desktop2023, QuickBooks Online 2024)",
+		text: "What specific tool/version do you have? (e.g., QuickBooks Desktop 2023, QuickBooks Online 2024)",
 		type: 'text'
 	},
 	{
@@ -185,7 +185,7 @@ export default function Chatbot() {
 			{/* Chat Button */}
 			<button
 				onClick={() => setIsOpen(true)}
-				className="fixed bottom-6 right-6 w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-110 flex items-center justify-center"
+				className="fixed bottom-6 right-6 w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-110 flex items-center justify-center z-50"
 			>
 				<MessageCircle className="w-6 h-6" />
 			</button>
