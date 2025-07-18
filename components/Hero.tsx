@@ -49,7 +49,7 @@ export default function Hero() {
           </p>
 
           {/* Early Access Signup Form */}
-          <div className="max-w-2xl mx-auto mb-12">
+          <div id="early-access-form" className="max-w-2xl mx-auto mb-12">
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-8">
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">

@@ -272,7 +272,15 @@ export default function Body() {
 							<p className="text-lg mb-6 opacity-90">
 								Join our early access program and be notified when we open private beta.
 							</p>
-							<button className="group bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto">
+							<button 
+								onClick={() => {
+									const formElement = document.getElementById('early-access-form');
+									if (formElement) {
+										formElement.scrollIntoView({ behavior: 'smooth' });
+									}
+								}}
+								className="group bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto hover:cursor-pointer"
+							>
 								Join Early Access
 								<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
 							</button>
