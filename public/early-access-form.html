@@ -5,13 +5,9 @@
 </head>
 <body>
   <!-- This file helps Netlify detect the form during build time -->
-  <form name="early-access" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <form name="early-access" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-redirect="/success" hidden>
     <input type="hidden" name="form-name" value="early-access" />
-    <p class="hidden">
-      <label>
-        Don't fill this out if you're human: <input name="bot-field" />
-      </label>
-    </p>
+    <input name="bot-field" />
     <input type="email" name="email" />
     <input type="text" name="company" />
     <input type="text" name="contact" />
