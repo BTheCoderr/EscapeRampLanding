@@ -64,8 +64,12 @@ export default function Hero() {
                 name="early-access"
                 method="POST" 
                 data-netlify="true"
-                data-netlify-redirect="/success"
+                action="/success"
                 className="space-y-6"
+                onSubmit={(e) => {
+                  console.log('Form submitted!');
+                  // Let the form submit naturally
+                }}
               >
                 <input type="hidden" name="form-name" value="early-access" />
                 
@@ -217,9 +221,6 @@ export default function Hero() {
                 
                 <button
                   type="submit"
-                  onClick={() => {
-                    console.log('Form submitted!');
-                  }}
                   className="group w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                 >
                   Join Early Access
