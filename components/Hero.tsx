@@ -60,39 +60,12 @@ export default function Hero() {
                 </p>
               </div>
               
-              <form 
+                            <form 
                 name="early-access"
                 method="POST" 
                 data-netlify="true"
+                action="/success"
                 className="space-y-6"
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  console.log('Form submitted!');
-                  
-                  const formData = new FormData(e.currentTarget);
-                  const data = Object.fromEntries(formData);
-                  console.log('Form data:', data);
-                  
-                                     // Submit to Netlify
-                   try {
-                     const response = await fetch('/', {
-                       method: 'POST',
-                       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                       body: new URLSearchParams(formData as any).toString(),
-                     });
-                    
-                    if (response.ok) {
-                      console.log('Form submitted successfully!');
-                      window.location.href = '/success';
-                    } else {
-                      console.error('Form submission failed');
-                      window.location.href = '/success';
-                    }
-                  } catch (error) {
-                    console.error('Form submission error:', error);
-                    window.location.href = '/success';
-                  }
-                }}
               >
                 <input type="hidden" name="form-name" value="early-access" />
                 
