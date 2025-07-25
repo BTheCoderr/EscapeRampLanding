@@ -5,7 +5,7 @@
 </head>
 <body>
   <!-- This file helps Netlify detect the form during build time -->
-  <form name="early-access" method="POST" data-netlify="true" action="/success" hidden>
+  <form name="early-access" method="POST" action="/api/submit-form" hidden>
     <input type="hidden" name="form-name" value="early-access" />
     <input type="email" name="email" />
     <input type="text" name="company" />
