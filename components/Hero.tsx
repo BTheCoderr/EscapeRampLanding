@@ -61,13 +61,40 @@ export default function Hero() {
               </div>
               
               <form 
-                name="early-access"
-                method="POST" 
-                data-netlify="true"
-                action="/success"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const data = {
+                    email: formData.get('email'),
+                    company: formData.get('company'),
+                    contact: formData.get('contact'),
+                    currentSoftware: formData.get('current-software'),
+                    budget: formData.get('budget'),
+                    urgency: formData.get('urgency'),
+                    tool: formData.get('tool'),
+                    migratingFrom: formData.get('migrating-from'),
+                    struggles: formData.get('struggles'),
+                  };
+                  
+                  try {
+                    const response = await fetch('/api/contact', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(data),
+                    });
+                    
+                    if (response.ok) {
+                      window.location.href = '/success';
+                    } else {
+                      alert('Something went wrong. Please try again.');
+                    }
+                  } catch (error) {
+                    alert('Something went wrong. Please try again.');
+                  }
+                }}
                 className="space-y-6"
               >
-                <input type="hidden" name="form-name" value="early-access" />
+
                 
                 {/* Email (required) */}
                 <div className="group">
