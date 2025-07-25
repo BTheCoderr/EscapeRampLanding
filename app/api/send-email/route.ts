@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const submissionsFile = path.join(process.cwd(), 'data', 'submissions.json');
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,10 +21,25 @@ export async function POST(request: NextRequest) {
     const migratingFrom = formData.get('migrating-from') as string;
     const struggles = formData.get('struggles') as string;
 
+    // Create submission object
+    const submission = {
+      id: Date.now().toString(),
+      timestamp: new Date().toISOString(),
+      email,
+      company,
+      contact,
+      currentSoftware,
+      budget,
+      urgency,
+      tool,
+      migratingFrom,
+      struggles,
+    };
+
     // Send email to you (admin)
     const adminEmail = await resend.emails.send({
       from: 'Escape Ramp <noreply@escaperamp.com>',
-      to: ['hello@escaperamp.com'], // Replace with your email
+      to: ['bferrell514@gmail.com'], // Your email
       subject: 'New Early Access Signup - Escape Ramp',
       html: `
         <h2>New Early Access Signup</h2>
@@ -56,9 +74,29 @@ export async function POST(request: NextRequest) {
       `,
     });
 
+    // Save submission locally
+    try {
+      const dataDir = path.join(process.cwd(), 'data');
+      await fs.mkdir(dataDir, { recursive: true });
+      
+      let submissions = [];
+      try {
+        const data = await fs.readFile(submissionsFile, 'utf8');
+        submissions = JSON.parse(data);
+      } catch {
+        // File doesn't exist yet, start with empty array
+      }
+      
+      submissions.unshift(submission);
+      await fs.writeFile(submissionsFile, JSON.stringify(submissions, null, 2));
+      console.log('Submission saved locally');
+    } catch (error) {
+      console.error('Error saving submission locally:', error);
+    }
+
     console.log('Emails sent successfully:', { adminEmail, userEmail });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, submissionId: submission.id });
   } catch (error) {
     console.error('Email sending error:', error);
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
