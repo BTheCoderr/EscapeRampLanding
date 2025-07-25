@@ -17,6 +17,7 @@ A modern, enterprise-level SaaS landing page for Escape Ramp, built with Next.js
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **Language**: TypeScript
+- **Email**: Resend (3,000 emails/month free)
 - **Deployment**: Ready for Vercel/Netlify
 
 ## Getting Started
@@ -34,13 +35,22 @@ A modern, enterprise-level SaaS landing page for Escape Ramp, built with Next.js
 npm install
 ```
 
-2. Run the development server:
+2. Set up Resend (Email Service):
+   - Sign up at [resend.com](https://resend.com)
+   - Get your API key from the dashboard
+   - Create a `.env.local` file in the root directory:
+   ```bash
+   RESEND_API_KEY=your_resend_api_key_here
+   ```
+   - Update the admin email in `app/api/send-email/route.ts` (line 20)
+
+3. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Build for Production
 

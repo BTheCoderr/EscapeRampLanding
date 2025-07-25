@@ -63,9 +63,32 @@ export default function Hero() {
                             <form 
                 name="early-access"
                 method="POST" 
-                data-netlify="true"
-                action="/success"
+                action="/api/send-email"
                 className="space-y-6"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  console.log('Form submitted!');
+                  
+                  const formData = new FormData(e.currentTarget);
+                  
+                  try {
+                    const response = await fetch('/api/send-email', {
+                      method: 'POST',
+                      body: formData,
+                    });
+                    
+                    if (response.ok) {
+                      console.log('Email sent successfully!');
+                      window.location.href = '/success';
+                    } else {
+                      console.error('Email sending failed');
+                      window.location.href = '/success';
+                    }
+                  } catch (error) {
+                    console.error('Form submission error:', error);
+                    window.location.href = '/success';
+                  }
+                }}
               >
                 <input type="hidden" name="form-name" value="early-access" />
                 
