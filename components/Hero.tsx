@@ -37,11 +37,11 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Main headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            The Fastest Way{' '}
-            <span className="text-green-600">Off The Old Books</span>
-          </h1>
+                           {/* Main headline */}
+                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                   The Fastest Ways{' '}
+                   <span className="text-green-600">Off The Books</span>
+                 </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
