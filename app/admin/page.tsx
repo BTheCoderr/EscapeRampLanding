@@ -20,14 +20,22 @@ interface Submission {
 export default function AdminPage() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchSubmissions = async () => {
     try {
+      setLoading(true);
+      setError(null);
       const response = await fetch('/.netlify/functions/submissions');
-      const data = await response.json();
-      setSubmissions(data);
+      if (response.ok) {
+        const data = await response.json();
+        setSubmissions(data);
+      } else {
+        setError('Unable to load submissions. Check your email for new signups.');
+      }
     } catch (error) {
       console.error('Error fetching submissions:', error);
+      setError('Unable to load submissions. Check your email for new signups.');
     } finally {
       setLoading(false);
     }
@@ -63,6 +71,11 @@ export default function AdminPage() {
                 <p className="text-gray-600 mt-1">
                   {submissions.length} submission{submissions.length !== 1 ? 's' : ''} received
                 </p>
+                {error && (
+                  <p className="text-orange-600 mt-2 text-sm">
+                    {error} Check your email at bferrell514@gmail.com for new signups.
+                  </p>
+                )}
               </div>
               <button
                 onClick={fetchSubmissions}
@@ -79,7 +92,14 @@ export default function AdminPage() {
               <div className="text-center py-12">
                 <Mail className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No submissions yet</h3>
-                <p className="text-gray-600">Form submissions will appear here once people start signing up.</p>
+                <p className="text-gray-600 mb-4">Form submissions will appear here once people start signing up.</p>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-md mx-auto">
+                  <h4 className="font-semibold text-blue-900 mb-2">Check Your Email</h4>
+                  <p className="text-blue-700 text-sm">
+                    All form submissions are sent directly to <strong>bferrell514@gmail.com</strong>. 
+                    Check your email for new signups!
+                  </p>
+                </div>
               </div>
             ) : (
               <table className="min-w-full divide-y divide-gray-200">
