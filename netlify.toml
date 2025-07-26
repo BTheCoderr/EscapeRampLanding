@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[functions]
+  directory = ".next/serverless"
+
+[build.environment]
+  NODE_VERSION = "18" 
