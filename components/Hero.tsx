@@ -71,10 +71,19 @@ export default function Hero() {
                   
                   const formData = new FormData(e.currentTarget);
                   
+                  // Convert FormData to URLSearchParams for Netlify Function
+                  const urlParams = new URLSearchParams();
+                  formData.forEach((value, key) => {
+                    urlParams.append(key, value.toString());
+                  });
+                  
                   try {
                     const response = await fetch('/.netlify/functions/send-email', {
                       method: 'POST',
-                      body: formData,
+                      headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      body: urlParams.toString(),
                     });
                     
                     if (response.ok) {

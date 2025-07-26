@@ -27,9 +27,13 @@ exports.handler = async (event, context) => {
     };
   }
 
-  try {
+    try {
     const formData = new URLSearchParams(event.body);
     
+    // Debug: Log the raw form data
+    console.log('Raw form data:', event.body);
+    console.log('Form data entries:', Array.from(formData.entries()));
+
     // Extract form data
     const email = formData.get('email');
     const company = formData.get('company');
@@ -40,6 +44,19 @@ exports.handler = async (event, context) => {
     const tool = formData.get('tool');
     const migratingFrom = formData.get('migrating-from');
     const struggles = formData.get('struggles');
+
+    // Validate email
+    if (!email || typeof email !== 'string' || !email.includes('@')) {
+      console.error('Invalid email:', email);
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Valid email address is required',
+          receivedEmail: email 
+        })
+      };
+    }
 
     // Create submission object
     const submission = {
