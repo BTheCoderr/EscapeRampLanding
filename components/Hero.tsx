@@ -63,7 +63,7 @@ export default function Hero() {
                             <form 
                 name="early-access"
                 method="POST" 
-                action="/api/send-email"
+                action="/.netlify/functions/send-email"
                 className="space-y-6"
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -72,7 +72,7 @@ export default function Hero() {
                   const formData = new FormData(e.currentTarget);
                   
                   try {
-                    const response = await fetch('/api/send-email', {
+                    const response = await fetch('/.netlify/functions/send-email', {
                       method: 'POST',
                       body: formData,
                     });
