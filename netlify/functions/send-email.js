@@ -73,38 +73,83 @@ exports.handler = async (event, context) => {
       struggles,
     };
 
-    // Send email to admin
-    const adminEmail = await resend.emails.send({
-      from: 'Escape Ramp <noreply@escaperamp.com>',
-      to: ['bferrell514@gmail.com'],
-      subject: 'New Early Access Signup - Escape Ramp',
-      html: `
-        <h2>New Early Access Signup</h2>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company}</p>
-        <p><strong>Contact:</strong> ${contact}</p>
-        <p><strong>Current Software:</strong> ${currentSoftware || 'Not specified'}</p>
-        <p><strong>Budget:</strong> ${budget || 'Not specified'}</p>
-        <p><strong>Urgency:</strong> ${urgency || 'Not specified'}</p>
-        <p><strong>Tool:</strong> ${tool || 'Not specified'}</p>
-        <p><strong>Migrating From:</strong> ${migratingFrom || 'Not specified'}</p>
-        <p><strong>Struggles:</strong> ${struggles || 'Not specified'}</p>
-      `
-    });
+    // Check if RESEND_API_KEY is set
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set');
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Email service not configured',
+          details: 'RESEND_API_KEY environment variable is missing'
+        })
+      };
+    }
 
+    console.log('Sending admin email to:', 'bferrell514@gmail.com');
+    
+    // Send email to admin
+    let adminEmail;
+    try {
+      adminEmail = await resend.emails.send({
+        from: 'Escape Ramp <noreply@escaperamp.com>',
+        to: ['bferrell514@gmail.com'],
+        subject: 'New Early Access Signup - Escape Ramp',
+        html: `
+          <h2>New Early Access Signup</h2>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Company:</strong> ${company}</p>
+          <p><strong>Contact:</strong> ${contact}</p>
+          <p><strong>Current Software:</strong> ${currentSoftware || 'Not specified'}</p>
+          <p><strong>Budget:</strong> ${budget || 'Not specified'}</p>
+          <p><strong>Urgency:</strong> ${urgency || 'Not specified'}</p>
+          <p><strong>Tool:</strong> ${tool || 'Not specified'}</p>
+          <p><strong>Migrating From:</strong> ${migratingFrom || 'Not specified'}</p>
+          <p><strong>Struggles:</strong> ${struggles || 'Not specified'}</p>
+        `
+      });
+      console.log('Admin email sent successfully:', adminEmail);
+    } catch (error) {
+      console.error('Failed to send admin email:', error);
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Failed to send admin email',
+          details: error.message
+        })
+      };
+    }
+
+    console.log('Sending user email to:', email);
+    
     // Send confirmation email to user
-    const userEmail = await resend.emails.send({
-      from: 'Escape Ramp <noreply@escaperamp.com>',
-      to: [email],
-      subject: 'Welcome to Escape Ramp Early Access!',
-      html: `
-        <h2>Welcome to Escape Ramp!</h2>
-        <p>Hi ${contact},</p>
-        <p>Thank you for joining our early access program! We're excited to have you on board.</p>
-        <p>We'll notify you as soon as we open our private beta in Fall 2025. In the meantime, we'll keep you updated on our progress.</p>
-        <p>Best regards,<br>The Escape Ramp Team</p>
-      `
-    });
+    let userEmail;
+    try {
+      userEmail = await resend.emails.send({
+        from: 'Escape Ramp <noreply@escaperamp.com>',
+        to: [email],
+        subject: 'Welcome to Escape Ramp Early Access!',
+        html: `
+          <h2>Welcome to Escape Ramp!</h2>
+          <p>Hi ${contact},</p>
+          <p>Thank you for joining our early access program! We're excited to have you on board.</p>
+          <p>We'll notify you as soon as we open our private beta in Fall 2025. In the meantime, we'll keep you updated on our progress.</p>
+          <p>Best regards,<br>The Escape Ramp Team</p>
+        `
+      });
+      console.log('User email sent successfully:', userEmail);
+    } catch (error) {
+      console.error('Failed to send user email:', error);
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Failed to send user email',
+          details: error.message
+        })
+      };
+    }
 
     // Save submission to JSON file
     const fs = require('fs').promises;
