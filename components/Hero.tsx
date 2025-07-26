@@ -63,7 +63,7 @@ export default function Hero() {
                             <form 
                 name="early-access"
                 method="POST" 
-                action="/.netlify/functions/send-email"
+                action="/api/send-email"
                 className="space-y-6"
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -71,19 +71,10 @@ export default function Hero() {
                   
                   const formData = new FormData(e.currentTarget);
                   
-                  // Convert FormData to URLSearchParams for Netlify Function
-                  const urlParams = new URLSearchParams();
-                  formData.forEach((value, key) => {
-                    urlParams.append(key, value.toString());
-                  });
-                  
                   try {
-                    const response = await fetch('/.netlify/functions/send-email', {
+                    const response = await fetch('/api/send-email', {
                       method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                      },
-                      body: urlParams.toString(),
+                      body: formData,
                     });
                     
                     if (response.ok) {
