@@ -1,6 +1,8 @@
 # Escape Ramp Landing Page
 
-A modern, enterprise-level SaaS landing page for Escape Ramp, built with Next.js, Tailwind CSS, and Lucide React icons.
+**Last Updated**: July 25, 2024 - 8:00 PM EST
+
+The fastest way off the old books. Escape Ramp helps small businesses transition painlessly to the cloud with guaranteed data preservation and zero downtime.
 
 ## Features
 
