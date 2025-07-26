@@ -224,6 +224,85 @@ export default function Hero() {
                     className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md"
                   />
                 </div>
+
+                {/* Approx. # of Transactions/Accounts */}
+                <div className="group">
+                  <label className="block text-sm font-semibold text-gray-700 group-focus-within:text-green-600 transition-colors">
+                    Approx. # of Transactions/Accounts
+                  </label>
+                  <input
+                    type="text"
+                    name="transactions"
+                    placeholder="e.g., 5,000 transactions, 50 accounts"
+                    className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md"
+                  />
+                </div>
+
+                {/* # of Bank/Credit Card Accounts */}
+                <div className="group">
+                  <label className="block text-sm font-semibold text-gray-700 group-focus-within:text-green-600 transition-colors">
+                    # of Bank/Credit Card Accounts *
+                  </label>
+                  <input
+                    type="number"
+                    name="bank-accounts"
+                    placeholder="e.g., 5"
+                    min="0"
+                    className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md"
+                    required
+                  />
+                </div>
+
+                {/* Data Objects Needed */}
+                <div className="group">
+                  <label className="block text-sm font-semibold text-gray-700 group-focus-within:text-green-600 transition-colors">
+                    Data Objects Needed *
+                  </label>
+                  <div className="grid grid-cols-2 gap-4 mt-2">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input type="checkbox" name="data-objects" value="contacts" className="rounded border-gray-300 text-green-600 focus:ring-green-500" />
+                      <span className="text-sm text-gray-700">Contacts</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input type="checkbox" name="data-objects" value="invoices" className="rounded border-gray-300 text-green-600 focus:ring-green-500" />
+                      <span className="text-sm text-gray-700">Invoices</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input type="checkbox" name="data-objects" value="attachments" className="rounded border-gray-300 text-green-600 focus:ring-green-500" />
+                      <span className="text-sm text-gray-700">Attachments</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input type="checkbox" name="data-objects" value="notes" className="rounded border-gray-300 text-green-600 focus:ring-green-500" />
+                      <span className="text-sm text-gray-700">Notes</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input type="checkbox" name="data-objects" value="inventory" className="rounded border-gray-300 text-green-600 focus:ring-green-500" />
+                      <span className="text-sm text-gray-700">Inventory</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input type="checkbox" name="data-objects" value="other" className="rounded border-gray-300 text-green-600 focus:ring-green-500" />
+                      <span className="text-sm text-gray-700">Other</span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Data Cleanliness */}
+                <div className="group">
+                  <label className="block text-sm font-semibold text-gray-700 group-focus-within:text-green-600 transition-colors">
+                    Data Cleanliness *
+                  </label>
+                  <select
+                    name="data-cleanliness"
+                    className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 text-gray-900 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md"
+                    required
+                  >
+                    <option value="">Rate your data quality</option>
+                    <option value="poor">Poor</option>
+                    <option value="fair">Fair</option>
+                    <option value="good">Good</option>
+                    <option value="excellent">Excellent</option>
+                  </select>
+                </div>
                 
                 {/* Specific struggles */}
                 <div className="group">
@@ -236,6 +315,21 @@ export default function Hero() {
                     rows={3}
                     className="w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 text-gray-900 placeholder-gray-400 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md resize-none"
                   ></textarea>
+                </div>
+
+                {/* Terms agreement */}
+                <div className="group">
+                  <label className="flex items-start space-x-2 cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      name="terms-agreement" 
+                      className="mt-1 rounded border-gray-300 text-green-600 focus:ring-green-500" 
+                      required 
+                    />
+                    <span className="text-sm text-gray-700">
+                      By submitting, I agree to receive early-access updates and understand that Escape Ramp will use this information to build a tailored migration solution.
+                    </span>
+                  </label>
                 </div>
                 
                 <button

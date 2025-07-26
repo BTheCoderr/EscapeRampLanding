@@ -16,7 +16,12 @@ export async function POST(request: NextRequest) {
     const urgency = formData.get('urgency') as string;
     const tool = formData.get('tool') as string;
     const migratingFrom = formData.get('migrating-from') as string;
+    const transactions = formData.get('transactions') as string;
+    const bankAccounts = formData.get('bank-accounts') as string;
+    const dataObjects = formData.getAll('data-objects') as string[];
+    const dataCleanliness = formData.get('data-cleanliness') as string;
     const struggles = formData.get('struggles') as string;
+    const termsAgreement = formData.get('terms-agreement') as string;
 
     // Validate email
     if (!email || !email.includes('@')) {
@@ -54,7 +59,12 @@ export async function POST(request: NextRequest) {
         <p><strong>Urgency:</strong> ${urgency || 'N/A'}</p>
         <p><strong>What tool do you have?:</strong> ${tool || 'N/A'}</p>
         <p><strong>What are you migrating from?:</strong> ${migratingFrom || 'N/A'}</p>
+        <p><strong>Approx. # of Transactions/Accounts:</strong> ${transactions || 'N/A'}</p>
+        <p><strong># of Bank/Credit Card Accounts:</strong> ${bankAccounts || 'N/A'}</p>
+        <p><strong>Data Objects Needed:</strong> ${dataObjects.length > 0 ? dataObjects.join(', ') : 'N/A'}</p>
+        <p><strong>Data Cleanliness:</strong> ${dataCleanliness || 'N/A'}</p>
         <p><strong>Specific Struggles:</strong> ${struggles || 'N/A'}</p>
+        <p><strong>Terms Agreement:</strong> ${termsAgreement ? 'Yes' : 'No'}</p>
         <p>Submission ID: ${submission.id}</p>
       `,
     });
