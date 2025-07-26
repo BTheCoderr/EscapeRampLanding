@@ -1,6 +1,7 @@
 # Escape Ramp Landing Page
 
-**Last Updated**: July 25, 2024 - 8:00 PM EST
+**Last Updated**: July 25, 2024 - 8:30 PM EST
+**Deployment Trigger**: Force redeploy with Netlify Functions
 
 The fastest way off the old books. Escape Ramp helps small businesses transition painlessly to the cloud with guaranteed data preservation and zero downtime.
 
