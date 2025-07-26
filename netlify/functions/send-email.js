@@ -89,6 +89,30 @@ exports.handler = async (event, context) => {
       `
     });
 
+    // Save submission to JSON file
+    const fs = require('fs').promises;
+    const path = require('path');
+    const submissionsFile = path.join(process.cwd(), 'data', 'submissions.json');
+    
+    try {
+      const dataDir = path.join(process.cwd(), 'data');
+      await fs.mkdir(dataDir, { recursive: true });
+      
+      let submissions = [];
+      try {
+        const data = await fs.readFile(submissionsFile, 'utf8');
+        submissions = JSON.parse(data);
+      } catch {
+        // File doesn't exist yet, start with empty array
+      }
+      
+      submissions.unshift(submission);
+      await fs.writeFile(submissionsFile, JSON.stringify(submissions, null, 2));
+      console.log('Submission saved locally');
+    } catch (error) {
+      console.error('Error saving submission locally:', error);
+    }
+
     console.log('Emails sent successfully:', { adminEmail, userEmail });
 
     return {

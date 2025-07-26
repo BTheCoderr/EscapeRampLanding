@@ -23,7 +23,7 @@ export default function AdminPage() {
 
   const fetchSubmissions = async () => {
     try {
-      const response = await fetch('/api/submissions');
+      const response = await fetch('/.netlify/functions/submissions');
       const data = await response.json();
       setSubmissions(data);
     } catch (error) {
