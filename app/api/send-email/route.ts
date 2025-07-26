@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
       html: `
         <h2>Welcome to Escape Ramp Early Access!</h2>
         <p>Hi ${contact || 'there'},</p>
-        <p>Thank you for your interest in Escape Ramp. We'll be in touch soon with updates on our private beta launch.</p>
+        <p>Thank you for your interest in Escape Ramp. We'll be in touch with updates on our private beta launch.</p>
         <p>Best regards,<br/>The Escape Ramp Team</p>
       `,
     });
