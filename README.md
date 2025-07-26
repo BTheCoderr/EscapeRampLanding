@@ -1,7 +1,7 @@
 # Escape Ramp Landing Page
 
-**Last Updated**: July 25, 2024 - 9:00 PM EST
-**Deployment Trigger**: Fix RESEND_API_KEY environment variable
+**Last Updated**: July 25, 2024 - 9:15 PM EST
+**Deployment Trigger**: Test RESEND_API_KEY after environment variable setup
 
 The fastest way off the old books. Escape Ramp helps small businesses transition painlessly to the cloud with guaranteed data preservation and zero downtime.
 
