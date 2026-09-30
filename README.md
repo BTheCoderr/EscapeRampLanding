@@ -1,5 +1,11 @@
 # Escape Ramp Landing Page
 
+<!-- repo-intro:start -->
+**Project snapshot:** Escape Ramp Landing is the conversion-focused front door for a SaaS concept helping small businesses move from legacy QuickBooks Desktop workflows toward cloud-based operations.
+
+**What it demonstrates:** Next.js · TypeScript · Tailwind CSS · SaaS landing-page UX · Resend integration.
+<!-- repo-intro:end -->
+
 **Last Updated**: July 25, 2024 - 9:15 PM EST
 **Deployment Trigger**: Test RESEND_API_KEY after environment variable setup
 
